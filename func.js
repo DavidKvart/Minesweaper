@@ -1,12 +1,13 @@
 let game=[];
+let counter=0;
 
-creatBoard()
-
+creatBoard();
 function creatBoard()
 {
    
-    const colum=3;
-    const rows=3;
+    const colum=9;
+    const rows=9;
+    // creat new empy array
     for(let i = 0; i<rows; i++)
         {
             game[i]=[];
@@ -16,48 +17,180 @@ function creatBoard()
             }
         }
 
-    console.log(game);
+    console.log(game);//for test
     
-
-    let diff=2;
+    // random the boombs 
+    let diff=10;
     let mineLocaitionRow=0,mineLocaitionCol=0;
     for (let i = 0; i<diff; i++)
     {
-        mineLocaitionCol=Math.floor(Math.random() * 3);
-        mineLocaitionRow=Math.floor(Math.random() * 3);
+        mineLocaitionCol=Math.floor(Math.random() * 9);
+        mineLocaitionRow=Math.floor(Math.random() * 9);
 
         if (game[mineLocaitionRow][mineLocaitionCol]==0)
-        game[mineLocaitionRow][mineLocaitionCol]=1;
+        game[mineLocaitionRow][mineLocaitionCol]=9;
         else
         i--;
     }
-    console.log(game);
 
-    document.getElementById("tile1").style.backgroundColor="red";
-    // document.getElementById("b").style.backgroundColor="red";
-    // document.body.style.backgroundColor = "red";
-    // drawBoard();
+    console.log(game);// for test
+    // pot value into all of the array with are not boombs
+    for(a=0;a<9;a++)
+        for (b=0; b<9;b++)
+            checkAroundSetup(a,b);
+
+         console.log(game); // for test
+        //  console.log(Math.ceil(document.getElementById(1).value/9));// round it up - number of row
     
 }
 
+function settingBoard()
+{
+    for (let p=1;p<=5; p++)
+    {
+        document.getElementById(p).innerHTML=p;
+        console.log(  document.getElementById(p).innerHTML);
+    }
 
-// function drawBoard()
-// {
-//     let tracker=1;
-//     for (let i=0;i<game.length;i++)
-//     {
-//         for (let j=0; j<game.length;j++)
-//             {
-//                 // if (game[i][j]==1)
-//                    { document.getElementById("#2").backgroundImage="url('./photo/boomb.jpg')";} 
-//                 // else
-//                 //    {} // document.getElementById(tracker).style.backgroundColor="red";
+}
 
-//                 // tracker++;
-//             }
-//     }
-// }           
 
+
+function checkAroundSetup(r,c){
+  
+let sum=0;
+if (game[r][c]==9)
+return;
+else
+{
+if (r==0 && c==0)// courner top left
+{
+    if (game[r][c+1]==9)
+        sum++;
+    if (game[r+1][c]==9)
+        sum++;
+    if (game[r+1][c+1]==9)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+}
+if (r==0 && c==8) // courner top right
+{
+    if (game[r][c-1]==9)
+        sum++;
+    if (game[r+1][c]==9)
+        sum++;
+    if (game[r+1][c-1]==0)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+}
+ if (r==8 && c==0) // courner bottom left
+{
+    if (game[r][c+1]==9)
+        sum++;
+    if (game[r-1][c]==9)
+        sum++;
+    if (game[r-1][c+1]==0)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+}
+if (r==8 && c==8)// courner bottom right
+{
+    if (game[r][c-1]==9)
+        sum++;
+    if (game[r-1][c]==9)
+        sum++;
+    if (game[r-1][c-1]==0)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+}
+if (c==0)//left collum
+{   
+     if (game[r-1][c+1]==9)
+                sum++;
+     if (game[r][c+1]==9)
+                sum++;
+     if (game[r+1][c+1]==9)
+                sum++;     
+     if (game[r+1][c]==9)
+                sum++;     
+     if (game[r-1][c]==9)
+                sum++;   
+    
+        game[r][c]=sum;
+         return;  
+}
+if (r==0)// top row
+{
+    if (game[r+1][c-1]==9)
+        sum++;
+    if (game[r+1][c]==9)
+        sum++;
+    if (game[r+1][c+1]==9)
+        sum++;
+    if (game[r][c+1]==9)
+        sum++;
+    if (game[r][c-1]==9)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+} 
+if (c==8) //right colum
+{
+    if (game[r+1][c-1]==9)
+        sum++;
+    if (game[r][c-1]==9)
+        sum++;
+    if (game[r-1][c-1]==9)
+        sum++;
+    if (game[r+1][c]==9)
+        sum++;
+    if (game[r-1][c]==9)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+} 
+if(r==8)// bottom row 
+{
+    if (game[r-1][c-1]==9)
+        sum++;
+    if (game[r-1][c]==9)
+        sum++;
+    if (game[r-1][c+1]==9)
+        sum++;
+    if (game[r][c+1]==9)
+        sum++;
+    if (game[r][c-1]==9)
+        sum++;
+
+        game[r][c]=sum;
+        return;
+} 
+else 
+{
+    for(let i=-1; i<2 ; i++)
+    {
+        for(let j=-1; j<2 ; j++){
+           if  (game[r+i][c+j]==9)
+                sum++;
+        }  
+    }
+    game[r][c]=sum;
+    return;
+        
+}
+}
+
+}
 
 
 
