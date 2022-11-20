@@ -1,13 +1,15 @@
 let game=[];
 let beenThere=[];
 let locaition=[];
+let wereBooms=[];
 let counter=0;
+let flagCounter=10;
 creatBoard();
 settingBeenthere ();
 setLocaition();
 let counterScore=0;
 
-
+// setting the bool area to see track with tiles the users already searched
 function settingBeenthere (){
 for(let L=0;L<9;L++)
 {   
@@ -19,7 +21,7 @@ for(let L=0;L<9;L++)
 }
 console.log(beenThere);
 }
-
+// setting the array of locaitions to translate html id into array locaition
 function setLocaition()
 {
     locaition[0]=null;
@@ -32,7 +34,7 @@ function setLocaition()
         locaition[h]=[Math.floor(h/9),h%9-1]// middle sells
     console.log(locaition)
 }
-
+// first set up of the board
 function creatBoard()
 {
    
@@ -78,6 +80,8 @@ function creatBoard()
 // set the iner value of the board with the array value
 function settingBoard()
 {
+    document.getElementById('flagCounterView').innerHTML=flagCounter;
+
     for(let kp=1;kp<82;kp++)
         document.getElementById(kp).innerHTML=kp;
      let count=1;
@@ -96,9 +100,9 @@ function settingBoard()
             document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)][tileNumber%9-1];
                 
             }
-        // if(document.getElementById(count).innerHTML==9)
-        //     document.getElementById(count).src="./photo/boomb.jpg";
-        // count++;[Math.floor(tileNumber/9)-1][8];
+            if (  document.getElementById(count).innerHTML==9)
+                wereBooms.push(count);
+        
         count++;
     }
     for (i=1;i<=81;i++)
@@ -112,7 +116,7 @@ function settingBoard()
                }
              }
 }
-
+// a function that help translating the array into html disply 
 function checkAroundSetup(r,c){
 let sum=0;
 if (game[r][c]==9)
@@ -255,7 +259,39 @@ function tileEvent(pIda)
 {
     let searc=document.getElementById("flagSearch").value;
 
-    if (searc=="flag" &&  beenThere[locaition[pIda][0]][locaition[pIda][1]]==false)
+    /////////the game over///////////// 
+    if (game[locaition[pIda][0]][locaition[pIda][1]]==9 && beenThere[locaition[pIda][0]][locaition[pIda][1]]==false)
+    {   
+        /// show corrent boomb
+        document.getElementById(pIda).style.backgroundImage= "url(./photo/boomb.jpg)";
+        document.getElementById(pIda).style.backgroundSize="30px";
+        document.getElementById(pIda).style.backgroundRepeat="no-repeat";
+        document.getElementById(pIda).style.fontSize="0px";
+        document.getElementById(pIda).style.display="flex"; //display the tile after pressed
+        document.getElementById(pIda).style.alignItems="center";
+        document.getElementById(pIda).style.justifyContent="center";
+        alert("looser!"); 
+
+        //// show all boombs  ///
+        for (O=0; O<9 ; O++ )
+            {
+                
+                document.getElementById(wereBooms[O]).style.backgroundImage= "url(./photo/boomb.jpg)";
+                document.getElementById(wereBooms[O]).style.backgroundSize="30px";
+                document.getElementById(wereBooms[O]).style.backgroundRepeat="no-repeat";
+                document.getElementById(wereBooms[O]).style.fontSize="0px";
+                document.getElementById(wereBooms[O]).style.display="flex"; //display the tile after pressed
+                document.getElementById(wereBooms[O]).style.alignItems="center";
+                document.getElementById(wereBooms[O]).style.justifyContent="center";
+            }
+            ////// disable the game ////
+            for (i=0;i<9;i++)
+                for(j=0; j<9;j++)
+                    beenThere[i][j]=true;
+
+    }
+    //// disable the tile wich flag was pressed apon 
+    if (searc=="flag" &&  beenThere[locaition[pIda][0]][locaition[pIda][1]]==false && flagCounter>0)
     {
                 document.getElementById(pIda).style.backgroundImage= "url(./photo/flag.png)";
                 document.getElementById(pIda).style.backgroundSize="30px";
@@ -264,30 +300,58 @@ function tileEvent(pIda)
                 document.getElementById(pIda).style.display="flex"; //display the tile after pressed
                 document.getElementById(pIda).style.alignItems="center";
                 document.getElementById(pIda).style.justifyContent="center";
+                flagCounter--;
+                document.getElementById('flagCounterView').innerHTML=flagCounter;
+                return;
     }
-    else{
+    
+    ///// diable the bottons that were already pressed 
+    if (beenThere[locaition[pIda][0]][locaition[pIda][1]]==true){
+        return;
+    }
 
-    if(counterScore==72)
-            alert("WIN");
+    /// wont let you press a bottun with  a flag 
+    if ( document.getElementById(pIda).style.fontSize=="0px")
+    {
+        return;
+    }
+
+   // neeeds to change - keeps track of the game 
+ 
+            
+    //adds to counter
+
 
     counterScore++;
-    beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;//add to array if pushed
+    if(counterScore==71)
+    {
+        for (O=0; O<9 ; O++ )
+        {
+            
+            document.getElementById(wereBooms[O]).style.backgroundImage= "url(./photo/boomb.jpg)";
+            document.getElementById(wereBooms[O]).style.backgroundSize="30px";
+            document.getElementById(wereBooms[O]).style.backgroundRepeat="no-repeat";
+            document.getElementById(wereBooms[O]).style.fontSize="0px";
+            document.getElementById(wereBooms[O]).style.display="flex"; //display the tile after pressed
+            document.getElementById(wereBooms[O]).style.alignItems="center";
+            document.getElementById(wereBooms[O]).style.justifyContent="center";
+        }
+        alert("WIN");
+        
+    }
+    beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;//add to array if activated
 
-    //check end game
-    
+   
 
     document.getElementById(pIda).style.display="flex"; //display the tile after pressed
     document.getElementById(pIda).style.alignItems="center";
     document.getElementById(pIda).style.justifyContent="center";
 
     let valu=document.getElementById(pIda).innerHTML;
+   
 
-    if (valu==9)
-    {
-        document.getElementById(pIda).style.fontSize="0";
-        alert("looser!"); 
-    }
-    else
+   
+    
     if ( valu !=0){
         if (valu==1){
         document.getElementById(pIda).style.color="blue";
@@ -316,10 +380,11 @@ function tileEvent(pIda)
             document.getElementById(pIda).style.backgroundColor="grey";
             checkAround(pIda);   
         }
-        console.log(beenThere);
-    
-    }}
-
+        console.log(counterScore);
+        
+       
+    }
+// dfs search algorithim 
 function checkAround (pId)
 {
   
@@ -400,8 +465,7 @@ function checkAround (pId)
     }
    // evry middle row 
 }
-
-
+//to change the value of the flag for the user to use 
 function startFlag()
 {
 let flagOrsearch = document.getElementById("flagSearch").value;

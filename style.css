@@ -21,6 +21,7 @@ border: 3px solid grey;
    background-size: 35px 35px;
    background-repeat: no-repeat;
    color: #0f1111;
+   
 
   
 }
@@ -35,8 +36,8 @@ border: 3px solid grey;
     font-family: "Amazon Ember",Arial,sans-serif;
    
     margin: 0px 0px 0px 0px;
-   
-    display: none;
+    /* background-image: url("./photo/boomb.jpg"); */
+    /* display: none; */
     vertical-align: middle;
    line-height: normal;
 
