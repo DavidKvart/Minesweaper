@@ -1,7 +1,37 @@
 let game=[];
+let beenThere=[];
+let locaition=[];
 let counter=0;
-
 creatBoard();
+settingBeenthere ();
+setLocaition();
+
+
+function settingBeenthere (){
+for(let L=0;L<9;L++)
+{   
+    beenThere[L]=[];
+    for(let l=0; l<9 ; l++)
+    {   
+        beenThere[L][l]=false;
+    }
+}
+console.log(beenThere);
+}
+
+function setLocaition()
+{
+    locaition[0]=null;
+    for(let h=1;h<82;h++)
+        if (h==81)
+        locaition[h]=[8,8];//81
+        else if (h%9==0)
+        locaition[h]=[Math.floor(h/9)-1,8];//right colom
+        else
+        locaition[h]=[Math.floor(h/9),h%9-1]// middle sells
+    console.log(locaition)
+}
+
 function creatBoard()
 {
    
@@ -44,20 +74,35 @@ function creatBoard()
     
 }
 
+// set the iner value of the board with the array value
 function settingBoard()
 {
-    for (let p=1;p<=5; p++)
-    {
-        document.getElementById(p).innerHTML=p;
-        console.log(  document.getElementById(p).innerHTML);
-    }
+    for(let kp=1;kp<82;kp++)
+        document.getElementById(kp).innerHTML=kp;
+     let count=1;
+     
+    while(count<=81)
+        {   
+          
+            let tileNumber=parseInt(document.getElementById(count).innerHTML);
 
+            if(tileNumber==81){
+                document.getElementById(count).innerHTML=game[8][8];
+            }
+            else if (tileNumber%9==0)
+            document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)][8];
+            else{
+            document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)][tileNumber%9-1];
+                
+            }
+        // if(document.getElementById(count).innerHTML==9)
+        //     document.getElementById(count).src="./photo/boomb.jpg";
+        // count++;[Math.floor(tileNumber/9)-1][8];
+        count++;
+    }
 }
 
-
-
 function checkAroundSetup(r,c){
-  
 let sum=0;
 if (game[r][c]==9)
 return;
@@ -175,7 +220,7 @@ if(r==8)// bottom row
         game[r][c]=sum;
         return;
 } 
-else 
+else // rest of board
 {
     for(let i=-1; i<2 ; i++)
     {
@@ -191,6 +236,141 @@ else
 }
 
 }
+
+function tileEvent(pIda)
+{
+    ///////game over function///////
+        ////should go here///////
+    beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;
+
+    let valu=document.getElementById(pIda).innerHTML;
+    if ( valu !=0){
+        document.getElementById(pIda).style.color="red";
+    }
+    else
+        {
+            document.getElementById(pIda).style.color="red";
+            checkAround(pIda);   
+        }
+        console.log(beenThere);
+
+}
+
+function checkAround (pId)
+{
+  
+    if (pId==1)
+    {
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+        if ( beenThere[locaition[pId+10][0]][locaition[pId+10][1]]!=true)tileEvent(pId+10);
+    }
+    //top lef 
+    else if (pId==9)
+    {
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+        if ( beenThere[locaition[pId+8][0]][locaition[pId+8][1]]!=true)tileEvent(pId+8);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+    }
+    // top right
+    else if (pId==73)
+    {
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId-8][0]][locaition[pId-8][1]]!=true)tileEvent(pId-8);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+    }
+    // botom left
+    else if (pId==81)
+    {
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+        if ( beenThere[locaition[pId-10][0]][locaition[pId-10][1]]!=true)tileEvent(pId-10);
+    }
+    // botom right
+    else if (pId%9==1)
+    {
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId+10][0]][locaition[pId+10][1]]!=true)tileEvent(pId+10);
+        if ( beenThere[locaition[pId-8][0]][locaition[pId-8][1]]!=true)tileEvent(pId-8);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+    }
+    // left col
+    else if (pId%9==0)
+    {
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+        if ( beenThere[locaition[pId+8][0]][locaition[pId+8][1]]!=true)tileEvent(pId+8);
+        if ( beenThere[locaition[pId-10][0]][locaition[pId-10][1]]!=true)tileEvent(pId-10);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+    }
+    // right col
+    else if (pId>1 && pId<9)
+    {
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+        if ( beenThere[locaition[pId+8][0]][locaition[pId+8][1]]!=true)tileEvent(pId+8);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+        if ( beenThere[locaition[pId+10][0]][locaition[pId+10][1]]!=true)tileEvent(pId+10);
+    }
+    // top rows
+    else if (pId>73 && pId<81)
+    {
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+        if ( beenThere[locaition[pId-8][0]][locaition[pId-8][1]]!=true)tileEvent(pId-8);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+        if ( beenThere[locaition[pId-10][0]][locaition[pId-10][1]]!=true)tileEvent(pId-10);
+    }
+    // bot row
+    else
+    {
+        if ( beenThere[locaition[pId+10][0]][locaition[pId+10][1]]!=true)tileEvent(pId+10);
+        if ( beenThere[locaition[pId+9][0]][locaition[pId+9][1]]!=true)tileEvent(pId+9);
+        if ( beenThere[locaition[pId+8][0]][locaition[pId+8][1]]!=true)tileEvent(pId+8);
+        if ( beenThere[locaition[pId-10][0]][locaition[pId-10][1]]!=true)tileEvent(pId-10);
+        if ( beenThere[locaition[pId-9][0]][locaition[pId-9][1]]!=true)tileEvent(pId-9);
+        if ( beenThere[locaition[pId-8][0]][locaition[pId-8][1]]!=true)tileEvent(pId-8);
+        if ( beenThere[locaition[pId+1][0]][locaition[pId+1][1]]!=true)tileEvent(pId+1);
+        if ( beenThere[locaition[pId-1][0]][locaition[pId-1][1]]!=true)tileEvent(pId-1);
+    }
+   // evry middle row 
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
