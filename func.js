@@ -90,7 +90,7 @@ function settingBoard()
                 document.getElementById(count).innerHTML=game[8][8];
             }
             else if (tileNumber%9==0)
-            document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)][8];
+            document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)-1][8];
             else{
             document.getElementById(count).innerHTML=game[Math.floor(tileNumber/9)][tileNumber%9-1];
                 
@@ -120,43 +120,43 @@ if (r==0 && c==0)// courner top left
         game[r][c]=sum;
         return;
 }
-if (r==0 && c==8) // courner top right
+else if (r==0 && c==8) // courner top right
 {
     if (game[r][c-1]==9)
         sum++;
     if (game[r+1][c]==9)
         sum++;
-    if (game[r+1][c-1]==0)
+    if (game[r+1][c-1]==9)
         sum++;
 
         game[r][c]=sum;
         return;
 }
- if (r==8 && c==0) // courner bottom left
+else if (r==8 && c==0) // courner bottom left
 {
     if (game[r][c+1]==9)
         sum++;
     if (game[r-1][c]==9)
         sum++;
-    if (game[r-1][c+1]==0)
+    if (game[r-1][c+1]==9)
         sum++;
 
         game[r][c]=sum;
         return;
 }
-if (r==8 && c==8)// courner bottom right
+else if (r==8 && c==8)// courner bottom right
 {
     if (game[r][c-1]==9)
         sum++;
     if (game[r-1][c]==9)
         sum++;
-    if (game[r-1][c-1]==0)
+    if (game[r-1][c-1]==9)
         sum++;
 
         game[r][c]=sum;
         return;
 }
-if (c==0)//left collum
+else if (c==0)//left collum
 {   
      if (game[r-1][c+1]==9)
                 sum++;
@@ -172,7 +172,7 @@ if (c==0)//left collum
         game[r][c]=sum;
          return;  
 }
-if (r==0)// top row
+else if (r==0)// top row
 {
     if (game[r+1][c-1]==9)
         sum++;
@@ -188,7 +188,7 @@ if (r==0)// top row
         game[r][c]=sum;
         return;
 } 
-if (c==8) //right colum
+else if (c==8) //right colum
 {
     if (game[r+1][c-1]==9)
         sum++;
@@ -204,7 +204,7 @@ if (c==8) //right colum
         game[r][c]=sum;
         return;
 } 
-if(r==8)// bottom row 
+else if(r==8)// bottom row 
 {
     if (game[r-1][c-1]==9)
         sum++;
