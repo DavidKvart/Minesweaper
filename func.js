@@ -5,6 +5,7 @@ let counter=0;
 creatBoard();
 settingBeenthere ();
 setLocaition();
+let counterScore=0;
 
 
 function settingBeenthere (){
@@ -100,12 +101,24 @@ function settingBoard()
         // count++;[Math.floor(tileNumber/9)-1][8];
         count++;
     }
+    for (i=1;i<=81;i++)
+             {
+               if (document.getElementById(i).innerHTML==9)
+               {
+                document.getElementById(i).style.backgroundImage= "url(./photo/boomb.jpg)";
+                document.getElementById(i).style.backgroundSize="30px"
+                document.getElementById(i).style.backgroundRepeat="no-repeat"
+                document.getElementById(i).style.fontSize="0px";
+               }
+             }
 }
 
 function checkAroundSetup(r,c){
 let sum=0;
 if (game[r][c]==9)
+{
 return;
+}
 else
 {
 if (r==0 && c==0)// courner top left
@@ -237,24 +250,75 @@ else // rest of board
 
 }
 
+//on pressing the button
 function tileEvent(pIda)
 {
-    ///////game over function///////
-        ////should go here///////
-    beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;
+    let searc=document.getElementById("flagSearch").value;
+
+    if (searc=="flag" &&  beenThere[locaition[pIda][0]][locaition[pIda][1]]==false)
+    {
+                document.getElementById(pIda).style.backgroundImage= "url(./photo/flag.png)";
+                document.getElementById(pIda).style.backgroundSize="30px";
+                document.getElementById(pIda).style.backgroundRepeat="no-repeat";
+                document.getElementById(pIda).style.fontSize="0px";
+                document.getElementById(pIda).style.display="flex"; //display the tile after pressed
+                document.getElementById(pIda).style.alignItems="center";
+                document.getElementById(pIda).style.justifyContent="center";
+    }
+    else{
+
+    if(counterScore==72)
+            alert("WIN");
+
+    counterScore++;
+    beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;//add to array if pushed
+
+    //check end game
+    
+
+    document.getElementById(pIda).style.display="flex"; //display the tile after pressed
+    document.getElementById(pIda).style.alignItems="center";
+    document.getElementById(pIda).style.justifyContent="center";
 
     let valu=document.getElementById(pIda).innerHTML;
+
+    if (valu==9)
+    {
+        document.getElementById(pIda).style.fontSize="0";
+        alert("looser!"); 
+    }
+    else
     if ( valu !=0){
-        document.getElementById(pIda).style.color="red";
+        if (valu==1){
+        document.getElementById(pIda).style.color="blue";
+        document.getElementById(pIda).style.fontSize="14px";
+        document.getElementById(pIda).style.fontWeight="600";
+        }
+        else if(valu==2){
+            document.getElementById(pIda).style.color="green";
+            document.getElementById(pIda).style.fontSize="14px";
+            document.getElementById(pIda).style.fontWeight="600"; 
+        }
+        else if(valu==3){
+            document.getElementById(pIda).style.color="orange";
+            document.getElementById(pIda).style.fontSize="14px";
+            document.getElementById(pIda).style.fontWeight="600"; 
+        }
+        else {
+            document.getElementById(pIda).style.color="red";
+            document.getElementById(pIda).style.fontSize="14px";
+            document.getElementById(pIda).style.fontWeight="600"; 
+        }
     }
     else
         {
-            document.getElementById(pIda).style.color="red";
+            document.getElementById(pIda).style.fontSize="0";
+            document.getElementById(pIda).style.backgroundColor="grey";
             checkAround(pIda);   
         }
         console.log(beenThere);
-
-}
+    
+    }}
 
 function checkAround (pId)
 {
@@ -338,54 +402,18 @@ function checkAround (pId)
 }
 
 
+function startFlag()
+{
+let flagOrsearch = document.getElementById("flagSearch").value;
+if (flagOrsearch=="search")
+document.getElementById("flagSearch").value="flag";
+else
+document.getElementById("flagSearch").value="search";
 
+console.log(document.getElementById("flagSearch").value)
+}
 
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function startFlag()
-// {
-// let flagOrsearch = document.getElementById("flagSearch").value;
-// if (flagOrsearch=="search")
-// document.getElementById("flagSearch").value="flag";
-// else
-// document.getElementById("flagSearch").value="search";
-
-// console.log(document.getElementById("flagSearch").value)
-// }
-
-
+    
 
 // function changeBack(x)
 // {
