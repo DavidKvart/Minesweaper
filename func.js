@@ -9,6 +9,7 @@ settingBeenthere ();
 setLocaition();
 let counterScore=0;
 
+
 // setting the bool area to see track with tiles the users already searched
 function settingBeenthere (){
 for(let L=0;L<9;L++)
@@ -105,16 +106,16 @@ function settingBoard()
         
         count++;
     }
-    for (i=1;i<=81;i++)
-             {
-               if (document.getElementById(i).innerHTML==9)
-               {
-                document.getElementById(i).style.backgroundImage= "url(./photo/boomb.jpg)";
-                document.getElementById(i).style.backgroundSize="30px"
-                document.getElementById(i).style.backgroundRepeat="no-repeat"
-                document.getElementById(i).style.fontSize="0px";
-               }
-             }
+    // for (i=1;i<=81;i++)
+    //          {
+    //            if (document.getElementById(i).innerHTML==9)
+    //            {
+    //             document.getElementById(i).style.backgroundImage= "url(./photo/boomb.jpg)";
+    //             document.getElementById(i).style.backgroundSize="30px"
+    //             document.getElementById(i).style.backgroundRepeat="no-repeat"
+    //             document.getElementById(i).style.fontSize="0px";
+    //            }
+    //          }
 }
 // a function that help translating the array into html disply 
 function checkAroundSetup(r,c){
@@ -260,7 +261,7 @@ function tileEvent(pIda)
     let searc=document.getElementById("flagSearch").value;
 
     /////////the game over///////////// 
-    if (game[locaition[pIda][0]][locaition[pIda][1]]==9 && beenThere[locaition[pIda][0]][locaition[pIda][1]]==false)
+    if (game[locaition[pIda][0]][locaition[pIda][1]]==9 && beenThere[locaition[pIda][0]][locaition[pIda][1]]==false && searc!="flag" )
     {   
         /// show corrent boomb
         document.getElementById(pIda).style.backgroundImage= "url(./photo/boomb.jpg)";
@@ -270,6 +271,7 @@ function tileEvent(pIda)
         document.getElementById(pIda).style.display="flex"; //display the tile after pressed
         document.getElementById(pIda).style.alignItems="center";
         document.getElementById(pIda).style.justifyContent="center";
+        document.getElementById('resetLogo').src="./logo/smiley3.ico";
         alert("looser!"); 
 
         //// show all boombs  ///
@@ -292,19 +294,29 @@ function tileEvent(pIda)
     }
     //// disable the tile wich flag was pressed apon 
     if (searc=="flag" &&  beenThere[locaition[pIda][0]][locaition[pIda][1]]==false && flagCounter>0)
-    {
-                document.getElementById(pIda).style.backgroundImage= "url(./photo/flag.png)";
-                document.getElementById(pIda).style.backgroundSize="30px";
-                document.getElementById(pIda).style.backgroundRepeat="no-repeat";
-                document.getElementById(pIda).style.fontSize="0px";
-                document.getElementById(pIda).style.display="flex"; //display the tile after pressed
-                document.getElementById(pIda).style.alignItems="center";
-                document.getElementById(pIda).style.justifyContent="center";
+    {       
+                if (document.getElementById(pIda).classList.contains("flagMark")){
+                 document.getElementById(pIda).classList.remove("flagMark");
+                 flagCounter++;
+                 document.getElementById('flagCounterView').innerHTML=flagCounter;
+
+                 return;
+                }
+                 else {
+                document.getElementById(pIda).classList.add("flagMark");
                 flagCounter--;
                 document.getElementById('flagCounterView').innerHTML=flagCounter;
+                 
                 return;
+                 }
     }
     
+    if( searc=="search" && document.getElementById(pIda).classList.contains("flagMark"))
+    {
+        document.getElementById(pIda).classList.remove("flagMark");
+        flagCounter++;
+        document.getElementById('flagCounterView').innerHTML=flagCounter;   
+    }
     ///// diable the bottons that were already pressed 
     if (beenThere[locaition[pIda][0]][locaition[pIda][1]]==true){
         return;
@@ -337,6 +349,7 @@ function tileEvent(pIda)
             document.getElementById(wereBooms[O]).style.justifyContent="center";
         }
         alert("WIN");
+        document.getElementById('resetLogo').src="./logo/smiley.ico";
         
     }
     beenThere[locaition[pIda][0]][locaition[pIda][1]]=true;//add to array if activated
@@ -469,11 +482,14 @@ function checkAround (pId)
 function startFlag()
 {
 let flagOrsearch = document.getElementById("flagSearch").value;
-if (flagOrsearch=="search")
+if (flagOrsearch=="search"){
 document.getElementById("flagSearch").value="flag";
-else
+document.getElementById('flagOnOff').style.display="block";
+}
+else{
 document.getElementById("flagSearch").value="search";
-
+document.getElementById('flagOnOff').style.display="none";
+}
 console.log(document.getElementById("flagSearch").value)
 }
 
