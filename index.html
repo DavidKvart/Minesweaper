@@ -1,113 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minesweaper</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./func.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweaper</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./func.js"></script>
 </head>
+<header>
+
+  <nav>
+    <ul>
+      <li class="logo"><a style="color: #f2f2f2" href="./Homepage.html">david kv</a></li>
+      <div class="items">
+
+        <li class="search-icon">
+          <input type="search" placeholder="Search">
+        </li>
+    </ul>
+  </nav>
+
+</header>
+
 <body onload="settingBoard()">
-    
-      
 
-    <div class="menuContainer">
-            <div class="tileCounter" id="mineCounter"><p id="flagCounterView">15</p></div>
-            <div class="reset"><a  href="./index.html"><img id="resetLogo" src="./photo/smile.png" alt=""></a></div>
-            <div class="flagToggle"><img id="flagOnOff" src="./photo/flag.png" alt=""></div>
-    </div>
 
-    <div class="board" id="board-grid" >
-        <button onclick="tileEvent(1)"  ><p id="1"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(2)"  ><p id="2"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(3)"  ><p id="3"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(4)"  ><p id="4"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(5)"  ><p id="5"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(6)"  ><p id="6"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(7)"  ><p id="7"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(8)"  ><p id="8"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(9)"  ><p id="9"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(10)" ><p id="10"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(11)" ><p id="11"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(12)" ><p id="12"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(13)" ><p id="13"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(14)" ><p id="14"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(15)" ><p id="15"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(16)" ><p id="16"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(17)" ><p id="17"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(18)" ><p id="18"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(19)" ><p id="19"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(20)" ><p id="20"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(21)" ><p id="21"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(22)" ><p id="22"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(23)" ><p id="23"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(24)" ><p id="24"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(25)" ><p id="25"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(26)" ><p id="26"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(27)" ><p id="27"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(28)" ><p id="28"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(29)" ><p id="29"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(30)" ><p id="30"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(31)" ><p id="31"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(32)" ><p id="32"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(33)" ><p id="33"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(34)" ><p id="34"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(35)" ><p id="35"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(36)" ><p id="36"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(37)" ><p id="37"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(38)" ><p id="38"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(39)" ><p id="39"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(40)" ><p id="40"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(41)" ><p id="41"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(42)" ><p id="42"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(43)" ><p id="43"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(44)" ><p id="44"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(45)" ><p id="45"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(46)" ><p id="46"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(47)" ><p id="47"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(48)" ><p id="48"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(49)" ><p id="49"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(50)" ><p id="50"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(51)" ><p id="51"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(52)" ><p id="52"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(53)" ><p id="53"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(54)" ><p id="54"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(55)" ><p id="55"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(56)" ><p id="56"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(57)" ><p id="57"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(58)" ><p id="58"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(59)" ><p id="59"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(60)" ><p id="60"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(61)" ><p id="61"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(62)" ><p id="62"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(63)" ><p id="63"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(64)" ><p id="64"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(65)" ><p id="65"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(66)" ><p id="66"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(67)" ><p id="67"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(68)" ><p id="68"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(69)" ><p id="69"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(70)" ><p id="70"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(71)" ><p id="71"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(72)" ><p id="72"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(73)" ><p id="73"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(74)" ><p id="74"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(75)" ><p id="75"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(76)" ><p id="76"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(77)" ><p id="77"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(78)" ><p id="78"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(79)" ><p id="79"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(80)" ><p id="80"></p><img src="" alt="" id=""></button>
-        <button onclick="tileEvent(81)" ><p id="81"></p><img src="" alt="" id=""></button>
-        
-  
+  <div class="menuContainer">
+    <div class="tileCounter" id="mineCounter">
+      <p id="flagCounterView">15</p>
     </div>
-    
-    <button onclick="startFlag()" id="flagSearch" value="search"><img src="./photo/flag.png" alt=""></button>
-    
-    <p id=""></p>
-    
+    <div class="reset"><a href="./index.html"><img id="resetLogo" src="./photo/smile.png" alt=""></a></div>
+    <div class="flagToggle"><img id="flagOnOff" src="./photo/flag.png" alt=""></div>
+  </div>
+
+  <div class="board" id="board-grid">
+    <button onclick="tileEvent(1)">
+      <p id="1"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(2)">
+      <p id="2"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(3)">
+      <p id="3"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(4)">
+      <p id="4"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(5)">
+      <p id="5"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(6)">
+      <p id="6"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(7)">
+      <p id="7"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(8)">
+      <p id="8"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(9)">
+      <p id="9"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(10)">
+      <p id="10"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(11)">
+      <p id="11"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(12)">
+      <p id="12"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(13)">
+      <p id="13"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(14)">
+      <p id="14"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(15)">
+      <p id="15"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(16)">
+      <p id="16"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(17)">
+      <p id="17"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(18)">
+      <p id="18"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(19)">
+      <p id="19"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(20)">
+      <p id="20"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(21)">
+      <p id="21"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(22)">
+      <p id="22"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(23)">
+      <p id="23"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(24)">
+      <p id="24"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(25)">
+      <p id="25"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(26)">
+      <p id="26"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(27)">
+      <p id="27"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(28)">
+      <p id="28"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(29)">
+      <p id="29"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(30)">
+      <p id="30"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(31)">
+      <p id="31"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(32)">
+      <p id="32"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(33)">
+      <p id="33"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(34)">
+      <p id="34"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(35)">
+      <p id="35"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(36)">
+      <p id="36"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(37)">
+      <p id="37"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(38)">
+      <p id="38"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(39)">
+      <p id="39"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(40)">
+      <p id="40"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(41)">
+      <p id="41"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(42)">
+      <p id="42"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(43)">
+      <p id="43"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(44)">
+      <p id="44"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(45)">
+      <p id="45"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(46)">
+      <p id="46"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(47)">
+      <p id="47"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(48)">
+      <p id="48"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(49)">
+      <p id="49"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(50)">
+      <p id="50"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(51)">
+      <p id="51"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(52)">
+      <p id="52"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(53)">
+      <p id="53"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(54)">
+      <p id="54"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(55)">
+      <p id="55"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(56)">
+      <p id="56"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(57)">
+      <p id="57"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(58)">
+      <p id="58"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(59)">
+      <p id="59"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(60)">
+      <p id="60"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(61)">
+      <p id="61"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(62)">
+      <p id="62"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(63)">
+      <p id="63"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(64)">
+      <p id="64"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(65)">
+      <p id="65"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(66)">
+      <p id="66"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(67)">
+      <p id="67"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(68)">
+      <p id="68"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(69)">
+      <p id="69"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(70)">
+      <p id="70"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(71)">
+      <p id="71"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(72)">
+      <p id="72"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(73)">
+      <p id="73"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(74)">
+      <p id="74"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(75)">
+      <p id="75"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(76)">
+      <p id="76"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(77)">
+      <p id="77"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(78)">
+      <p id="78"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(79)">
+      <p id="79"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(80)">
+      <p id="80"></p><img src="" alt="" id="">
+    </button>
+    <button onclick="tileEvent(81)">
+      <p id="81"></p><img src="" alt="" id="">
+    </button>
+
+
+  </div>
+
+  <button onclick="startFlag()" id="flagSearch" value="search"><img src="./photo/flag.png" alt=""></button>
+
+  <p id=""></p>
+
 
 </body>
+
 </html>
