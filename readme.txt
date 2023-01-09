@@ -1,26 +1,15 @@
-﻿=== Minesweeper Icon Set ===
+# My first Java Script project
 
-By: Sirea (http://www.rw-designer.com/user/5920) m.smejkalova@gmail.com
+this project was created with vanilla javascript and is based on the game MineSweaper. It was created 2 weeks after i started learning programming
 
-Download: http://www.rw-designer.com/icon-set/minesweeper
+## parts of interest 
 
-Author's decription:
+the most interesting part of this project was the Implementation of the BDS algorithm, which is used in a recursion to search the array for all tiles around the tile press for the expanding part.
 
-Icons from the Minesweeper game. You know it from Windows.
+### the main difficulty 
 
-==========
+the hardest part was actually the front end and how to make the site respond to the data array. I used a multidimention array to control both the value of the tile and the style to be displayed 
 
-License: Creative Commons - Attribution
+### To start the project, you can enter the link below https://jovial-salmiakki-bdc256.netlify.app/
 
-You are free:
-
-* To Share - To copy, distribute and transmit the work.
-* To Remix - To adapt the work.
-
-Under the following conditions:
-
-* Attribution - You must attribute the work in the manner specified
-  by the author or licensor (but not in any way that suggests that
-  they endorse you or your use of the work). For example, if you are
-  making the work available on the Internet, you must link to the
-  original source.
+or to clone the project and start a live server
